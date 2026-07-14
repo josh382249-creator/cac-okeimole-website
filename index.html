@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAC Okeimole Olorisaoko | One Fold, One Shepherd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wine: #6D071A; 
+      --cream: #FDF7E9; 
+      --gold: #C9A227; 
+      --dark: #2A2A2A;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { color: var(--dark); background: var(--cream); line-height: 1.7; font-family: 'Poppins', sans-serif; }
+    
+    nav { background: var(--wine); padding: 15px 5%; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    nav img { height: 55px; background: white; padding: 8px; border-radius: 50%; border: 2px solid var(--gold); }
+    .nav-links { display: flex; }
+    .nav-links a { color: var(--cream); margin: 0 12px; text-decoration: none; font-weight: 500; font-size: 0.9rem; letter-spacing: 1px; }
+    .nav-links a:hover { color: var(--gold); }
+    .hamburger { display: none; font-size: 28px; color: var(--cream); cursor: pointer; }
+    
+    header { background: linear-gradient(rgba(109,7,26,0.8), rgba(109,7,26,0.9)), url('church-hero.jpg') center/cover; color: var(--cream); text-align: center; padding: 120px 20px; }
+    header img { width: 140px; background: white; padding: 12px; border-radius: 50%; border: 3px solid var(--gold); }
+    header h1 { font-family: 'Cinzel', serif; font-size: 2.8rem; letter-spacing: 2px; }
+    .btn-live { background: var(--gold); color: var(--wine); padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px; }
+    
+    section { padding: 80px 5%; max-width: 1200px; margin: auto; }
+    h2 { font-family: 'Cinzel', serif; color: var(--wine); text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
+    h2:after { content: ''; width: 80px; height: 3px; background: var(--gold); display: block; margin: 15px auto 0; }
+    
+    .card { background: white; padding: 35px; border-radius: 15px; margin-bottom: 30px; border-left: 4px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .card h3 { font-family: 'Cinzel', serif; color: var(--wine); margin-bottom: 15px; font-size: 1.5rem; }
+    
+    .ministers { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 35px; text-align: center; }
+    .minister { background: white; padding: 30px 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .minister img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid var(--gold); margin-bottom: 20px; }
+    
+    .pastor-lead { grid-column: 1 / -1; background: linear-gradient(135deg, var(--wine), #8B0A22); color: white; padding: 50px; border-radius: 20px; }
+    .pastor-lead img { width: 220px; height: 220px; border: 5px solid var(--gold); box-shadow: 0 0 0 8px rgba(201,162,39,0.2); }
+    .pastor-lead h3 { color: var(--gold); font-size: 1.8rem; }
+    
+    .service-item { background: white; padding: 18px 25px; margin: 12px 0; border-left: 5px solid var(--wine); border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.04); }
+    .service-item strong { color: var(--wine); }
+    
+    .event { background: white; padding: 25px; margin: 20px 0; border-radius: 12px; border-top: 4px solid var(--gold); box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+    .event h3 { color: var(--wine); font-family: 'Cinzel'; }
+    
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .gallery-item { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+    .gallery-item img { width: 100%; height: 220px; object-fit: cover; }
+    .gallery-item h4 { padding: 15px; text-align: center; color: var(--wine); font-family: 'Cinzel'; }
+    
+    .dept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+    .dept { background: white; padding: 25px; border-radius: 15px; text-align: center; border-top: 4px solid var(--gold); box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+    .dept h3 { color: var(--wine); font-family: 'Cinzel'; }
+    
+    .giving { background: linear-gradient(135deg, var(--wine), #8B0A22); color: var(--cream); text-align: center; border-radius: 18px; padding: 60px 30px; }
+    .giving h2 { color: var(--cream); }
+    .giving h2:after { background: var(--gold); }
+    .account-box { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin-top: 20px; font-size: 1.2rem; }
+    
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
+    .contact-item { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+    .contact-item h3 { color: var(--wine); font-family: 'Cinzel'; margin-bottom: 10px; }
+    .social a { margin: 0 10px; color: var(--wine); text-decoration: none; font-weight: 600; }
+    
+    .whatsapp { position: fixed; bottom: 25px; right: 25px; background: var(--gold); color: var(--wine); padding: 16px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; z-index: 99; }
+    footer { background: var(--wine); color: var(--cream); text-align: center; padding: 30px; }
+    
+    @media (max-width: 900px) {
+      .nav-links { display: none; flex-direction: column; width: 100%; background: var(--wine); position: absolute; top: 80px; left: 0; padding: 20px 0; text-align: center; }
+      .nav-links.active { display: flex; }
+      .nav-links a { margin: 12px 0; }
+      .hamburger { display: block; }
+      .pastor-lead img { width: 180px; height: 180px; }
+      header h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <img src="logo.png" alt="CAC Okeimole Logo">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" onclick="toggleMenu()">HOME</a>
+      <a href="#about" onclick="toggleMenu()">ABOUT</a>
+      <a href="#ministers" onclick="toggleMenu()">MINISTERS</a>
+      <a href="#services" onclick="toggleMenu()">SERVICES</a>
+      <a href="#events" onclick="toggleMenu()">EVENTS</a>
+      <a href="#gallery" onclick="toggleMenu()">GALLERY</a>
+      <a href="#departments" onclick="toggleMenu()">DEPARTMENTS</a>
+      <a href="#giving" onclick="toggleMenu()">GIVING</a>
+      <a href="#contact" onclick="toggleMenu()">CONTACT</a>
+    </div>
+  </nav>
+
+  <header id="home">
+    <img src="logo.png" alt="CAC Okeimole Logo">
+    <h1>CAC OKEIMOLE OLORISAOKO</h1>
+    <p>ONE FOLD, ONE SHEPHERD - JOHN 10:16</p>
+    <a href="https://youtube.com/@cacokeimoleolorisaoko" class="btn-live" target="_blank">🔴 JOIN OUR LIVE SERVICE</a>
+  </header>
+
+  <section id="about">
+    <h2>About Our Church</h2>
+    <div class="card">
+      <h3>Church History</h3>
+      <p><!-- EDIT HERE: Paste your church history here when you have it --></p>
+    </div>
+    <div class="card">
+      <h3>Statement of Faith</h3>
+      <p><!-- EDIT HERE: Paste your statement of faith here when you have it --></p>
+    </div>
+    <div class="card">
+      <h3>Our Mission</h3>
+      <p>To deliver people from the bondage of sin and Satan through the power of God's word, undiluted praise and Holy Spirit-filled prayers</p>
+    </div>
+    <div class="card">
+      <h3>Our Vision</h3>
+      <p>Taking the members to realm of becoming agent of deliverance and blessings to their generation</p>
+    </div>
+  </section>
+
+  <section id="ministers">
+    <h2>Our Ministers</h2>
+    <div class="ministers">
+      <div class="minister pastor-lead">
+        <img src="pastor.jpg" alt="Pastor Moses">
+        <h3>Pastor Moses Akeem Aare</h3>
+        <p>Pastor In Charge</p>
+        <p style="margin-top:15px; font-size:0.95rem;"><!-- Edit Here; Pastor akeem aare was born in the year 1991 --></p>
+      </div>
+      <div class="minister">
+        <img src="minister1.jpg" alt="Evangelist Pius">
+        <h3>Evangelist Pius Emmanuel</h3>
+      </div>
+      <div class="minister">
+        <img src="minister2.jpg" alt="Evangelist Oluwaseun">
+        <h3>Evangelist Oluwaseun Idowu</h3>
+      </div>
+      <div class="minister">
+        <img src="minister3.jpg" alt="Lady Evangelist">
+        <h3>Lady Evangelist Akinola Abosede</h3>
+      </div>
+      <div class="minister">
+        <img src="minister4.jpg" alt="Evangelist Tolulope">
+        <h3>Evangelist Arowosaye Tolulope</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>Weekly Services</h2>
+    <p style="text-align:center; margin-bottom:30px;">We have both Yoruba and English Assembly</p>
+    <div class="service-item"><strong>Sunday:</strong> 7:30 AM - Sunday Service</div>
+    <div class="service-item"><strong>Monday:</strong> 5:00 PM - Bible Study</div>
+    <div class="service-item"><strong>Wednesday:</strong> 9:00 AM - Hour of Divine Intervention</div>
+    <div class="service-item"><strong>1st, 2nd, 3rd of Every Month:</strong> 6:00 AM - Fosuyipemi Prayer Meeting</div>
+    <div class="service-item"><strong>Every 1st Saturday:</strong> 6:00 AM - Death of a Child is Not Mine</div>
+    <div class="service-item"><strong>Every Last Friday:</strong> Power Night</div>
+    <div class="service-item"><strong>Every 2nd Thursday:</strong> 7:00 AM - God of Our Fathers Prayer Mountain Program</div>
+    <div class="service-item"><strong>Every 3rd Saturday:</strong> 6:00 AM - God As of Old</div>
+  </section>
+
+  <section id="events">
+    <h2>Upcoming Events</h2>
+    <div class="event">
+      <h3>Candidate of Mercy Prophetic Gathering</h3>
+      <p><strong>Date:</strong> August 1 | <strong>Time:</strong> 7:00 AM</p>
+      <p><em>Flier coming soon</em></p>
+    </div>
+    <div class="event">
+      <h3>Holy Ghost Festival</h3>
+      <p><strong>Date:</strong> August 9 - August 29</p>
+      <p><em>Flier coming soon</em></p>
+    </div>
+    <div class="event">
+      <h3>December Apostolic Fire Crusade</h3>
+      <p><strong>Date:</strong> December 2026</p>
+      <p><em>Flier coming soon</em></p>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Church Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="gallery1.jpg" alt="">
+       
+      </div>
+      <div class="gallery-item">
+        <img src="gallery2.jpg" alt="">
+      
+      </div>
+      <div class="gallery-item">
+        <img src="gallery3.jpg" alt="">
+        
+ </div>
+      <div class="gallery-item">
+        <img src="gallery4.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery5.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery6.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery7.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery8.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery9.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery10.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery11.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery12.jpg" alt="">
+
+ </div>
+      <div class="gallery-item">
+        <img src="gallery13.jpg" alt="">
+
+      </div>
+    </div>
+  </section>
+
+  <section id="departments">
+    <h2>Our Departments</h2>
+    <div class="dept-grid">
+      <div class="dept"><h3>Youth</h3></div>
+      <div class="dept"><h3>Good Women</h3></div>
+      <div class="dept"><h3>Excellent Men</h3></div>
+      <div class="dept"><h3>Children</h3></div>
+      <div class="dept"><h3>Choir</h3></div>
+      <div class="dept"><h3>Drama Unit</h3></div>
+    </div>
+  </section>
+
+  <section id="giving">
+    <div class="giving">
+      <h2>Support God's Work</h2>
+      <p>Your seed helps us spread the gospel and take care of God's house</p>
+      <div class="account-box">
+        <strong>Account Name:</strong> Christ Apostolic Church Oke Imole Olorisaoko<br>
+        <strong>Account Number:</strong> 5301168014<br>
+        <strong>Bank:</strong> FCMB
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3>Address</h3>
+        <p>Elewedu, Olorisaoko, Moniya, Ibadan</p>
+      </div>
+      <div class="contact-item">
+        <h3>Phone & WhatsApp</h3>
+        <p>0816 261 5032</p>
+      </div>
+      <div class="contact-item">
+        <h3>Follow Us</h3>
+        <div class="social">
+          <a href="https://youtube.com/@cacokeimoleolorisaoko" target="_blank">YouTube</a>
+          <a href="https://facebook.com/cacokeimoleolorisaoko" target="_blank">Facebook</a>
+          <a href="https://instagram.com/cacokeimoleolorisaoko" target="_blank">Instagram</a>
+          <a href="https://tiktok.com/@cacokeimoleolorisaoko" target="_blank">TikTok</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/2348162615032" class="whatsapp" target="_blank">Chat on WhatsApp</a>
+  <footer><p>&copy; 2026 CAC Okeimole Olorisaoko. All Rights Reserved.</p></footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
